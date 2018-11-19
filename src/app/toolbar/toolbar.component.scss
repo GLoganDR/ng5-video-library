@@ -1,0 +1,17 @@
+.app-toolbar {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
+
+    .app-title {
+        @media(max-width: 768px) {
+            margin: 0 auto;
+        }
+    }
+}
+
+.align-icon {
+    display: inline-flex;
+    vertical-align: middle;
+}

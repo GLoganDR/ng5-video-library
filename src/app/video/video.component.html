@@ -1,0 +1,67 @@
+<mat-progress-spinner *ngIf="loading"
+                      class="center-content"
+                      color="primary"
+                      mode="indeterminate">
+</mat-progress-spinner>
+
+<mat-card class="video-card center-content" *ngIf="!loading && videos.length === 0">
+    <mat-card-content>
+        <p class="not-found">
+            <span>No Videos Were Found!</span>
+        </p>
+    </mat-card-content>
+
+    <mat-card-footer *ngIf="prevPageToken">
+        <div class="pagination text-center secondary-text">
+            Back to Previous Page of Results
+
+            <button mat-icon-button [disabled]="!prevPageToken" (click)="getVideos(prevPageToken)">
+                <mat-icon aria-label="Previous Page">arrow_back_ios</mat-icon>
+            </button>
+
+            <span>Pages({{pageTotal}})</span>
+        </div>
+    </mat-card-footer>
+</mat-card>
+
+<div *ngIf="!loading && videos.length > 0">
+
+    <mat-grid-list [cols]="breakpoint" rowHeight="500px" (window:resize)="onResize($event)">
+        <mat-grid-tile *ngFor="let video of videos"
+                       [@videos]="videos.length">
+            <mat-card class="video-card center-content">
+                <mat-card-header>
+                    <mat-card-title class="video-title">{{video.snippet.title}}</mat-card-title>
+                </mat-card-header>
+
+                <img *ngIf="!video.url" mat-card-image [src]="video.snippet.thumbnails.medium.url" alt="thumbnail">
+                <iframe *ngIf="video.url" mat-card-image width="320" height="180" [src]="video.url" frameborder="0" allowfullscreen></iframe>
+
+                <mat-card-content>
+                    <p>
+                        {{video.snippet.description | truncate:[150, '...']}}
+                    </p>
+
+                    <p class="secondary-text">
+                        <span mat-line>Published At:</span>
+                        <span>{{video.snippet.publishedAt | date:'MM/dd/yyyy'}}</span>
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <div class="pagination text-right secondary-text">
+        Results Per Page: {{pageSize}}
+
+        <button mat-icon-button [disabled]="!prevPageToken" (click)="getVideos(prevPageToken)">
+            <mat-icon aria-label="Previous Page">arrow_back_ios</mat-icon>
+        </button>
+
+        <button mat-icon-button [disabled]="!nextPageToken" (click)="getVideos(nextPageToken)">
+            <mat-icon aria-label="Next Page">arrow_forward_ios</mat-icon>
+        </button>
+
+        <span>Pages({{pageTotal}})</span>
+    </div>
+</div>

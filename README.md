@@ -1,6 +1,15 @@
+# APP INSTRUCTIONS:
+
+To use this app, you should only need to run npm install.
+
+Once that is done, follow the below commands for serving and testing.
+
+I only did one e2e test. I went over on time by a few hours. I was wanting to get it to look as nice as possible.
+
+
 # Ng5VideoLibrary
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.8.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
 
 ## Development server
 
