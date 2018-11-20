@@ -4,7 +4,7 @@ To use this app, you should only need to run npm install.
 
 Once that is done, follow the below commands for serving and testing.
 
-I only did one e2e test. I went over on time by a few hours. I was wanting to get it to look as nice as possible.
+I only did one e2e test.
 
 
 # Ng5VideoLibrary
